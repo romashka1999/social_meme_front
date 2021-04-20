@@ -1,13 +1,30 @@
 import React from 'react';
-
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import './App.css';
-import Form from "./Form";
+import SignIn from './modules/auth/components/SignIn';
 
 
 const App = () => {
+    const isAUthenticated: boolean = localStorage.getItem('token') ? true: false;
     return (
-        <Form/>
+        <Router>
+            <Switch>
+                <Route path='/sign-in'>
+                    <SignIn />
+                </Route>
+                <Route
+                    path='/'
+                    exact
+                    render={() => {
+                        return (
+                            isAUthenticated ?
+                            <Redirect to='profile' /> :
+                            <Redirect to='sign-in' />
+                        )
+                    }}/>
+            </Switch>
+        </Router>
     );
 }
 
