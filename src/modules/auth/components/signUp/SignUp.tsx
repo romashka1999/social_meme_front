@@ -6,19 +6,18 @@ import {useHistory} from "react-router-dom";
 import * as yup from "yup";
 
 import CustomSnackBar, {SnackOptions, SnackSeverity} from "../../../../shared/components/CustomSnackBar";
-import {SignInDto} from "../../dto/sign-in.dto";
-import {signIn as signInService} from "../../services/auth.service";
+import {signUp as signUpService} from "../../services/auth.service";
 import Form from '../form/Form';
-import './SignIn.css'
+import './SignUp.css'
 import CreateBackdrop from "../../../../shared/components/CreateBackdrop";
+import {SignUpDto} from "../../dto/sign-up.dto";
 
 interface Props {
     history: any;
 }
 
 const footerData = [
-    {text: "Forgot password?", redirectTo: '/'},
-    {text: "Don't have account? Sign Up", redirectTo: '/sign-up'},
+    {text: "Already have account? Sign in", redirectTo: '/sign-in'},
 ]
 
 const useStyles = makeStyles((theme) => ({
@@ -34,12 +33,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const signInValidationSchema = yup.object().shape({
-    email: yup.string().required().email(),
-    password: yup.string().required().min(8),
-});
-
-const SignIn: React.FC<Partial<Props>> = (props) => {
+const SignUp: React.FC<Partial<Props>> = (props) => {
     const classes = useStyles();
     const history = useHistory();
     const [loading, setLoading] = useState<boolean>(false);
@@ -48,15 +42,29 @@ const SignIn: React.FC<Partial<Props>> = (props) => {
         message: "",
         severity: SnackSeverity.INFO,
     });
-    const {register, handleSubmit, reset, errors} = useForm(/*{ resolver: yupResolver(signInValidationSchema) }*/);
+    const {register, handleSubmit, reset, errors} = useForm(/*{ resolver: yupResolver(signUpValidationSchema) }*/);
 
-    const signInInputData = [
+    const signUpInputData = [
+        {
+            label: 'firstName',
+            id: 'firstName',
+            name: 'firstName',
+            autoComplete: 'firstName',
+            isAutofocus: true,
+        },
+        {
+            label: 'lastName',
+            id: 'lastName',
+            name: 'lastName',
+            autoComplete: 'lastName',
+            isAutofocus: false,
+        },
         {
             label: 'email',
             id: 'email',
             name: 'email',
             autoComplete: 'email',
-            isAutofocus: true,
+            isAutofocus: false,
         },
         {
             label: 'password',
@@ -68,16 +76,18 @@ const SignIn: React.FC<Partial<Props>> = (props) => {
 
     ]
 
-    const onSubmitSignIn = async (data: any) => {
+    const onSubmitSignUp = async (data: any) => {
         console.log("data :>> ", data);
         console.log("errors :>> ", errors);
         try {
-            const signInDto: SignInDto = {
+            const signUpDto: SignUpDto = {
+                firstName: data.firstName,
+                lastName: data.lastName,
                 email: data.email,
                 password: data.password,
             };
             setLoading(true);
-            const response = await signInService(signInDto);
+            const response = await signUpService(signUpDto);
             const {access_token} = response.data;
             localStorage.setItem("token", access_token);
             history.push("/profile");
@@ -119,14 +129,14 @@ const SignIn: React.FC<Partial<Props>> = (props) => {
                         <img src={process.env.PUBLIC_URL + 'logo.svg'}
                              className='sign_in_logo' alt='logo'/>
                     </Avatar>
-                    <Typography component="h1">Sign in</Typography>
+                    <Typography component="h1">Sign up</Typography>
                 </Grid>
                 <Form
                     register={register}
-                    onSubmit={onSubmitSignIn}
+                    onSubmit={onSubmitSignUp}
                     handleSubmit={handleSubmit}
-                    inputFieldData={signInInputData}
-                    buttonText='Sign in'
+                    inputFieldData={signUpInputData}
+                    buttonText='Sign up'
                     footerValues={footerData}
                 />
             </Container>
@@ -138,4 +148,4 @@ const SignIn: React.FC<Partial<Props>> = (props) => {
     );
 };
 
-export default SignIn;
+export default SignUp;

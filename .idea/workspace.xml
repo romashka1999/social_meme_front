@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94f2c9ff-8a7a-4fd4-97b0-64b55a2061cc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/auth/components/form/Form.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/auth/components/form/Form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/auth/components/inputField/InputField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/auth/components/signIn/SignIn.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/auth/components/footer/Footer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/auth/components/signUp/SignUp.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/auth/components/signUp/SignUp.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/components/CreateBackdrop.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/auth/components/SignIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/auth/components/signIn/SignIn.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/auth/components/form/Form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/auth/components/form/Form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/auth/components/signIn/SignIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/auth/components/signIn/SignIn.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +19,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="CSS File" />
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -83,7 +82,7 @@
       <option name="presentableId" value="Default" />
       <updated>1618747512535</updated>
       <workItem from="1618747516694" duration="12441000" />
-      <workItem from="1621693467100" duration="9463000" />
+      <workItem from="1621693467100" duration="14943000" />
     </task>
     <servers />
   </component>

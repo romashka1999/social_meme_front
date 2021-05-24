@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom
 import './App.module.css';
 import SignIn from './modules/auth/components/signIn/SignIn';
 import classes from './App.module.css';
+import SignUp from "./modules/auth/components/signUp/SignUp";
 
 const App = () => {
     const isAuthenticated: boolean = localStorage.getItem('token') ? true : false;
@@ -13,6 +14,9 @@ const App = () => {
                 <Switch>
                     <Route path='/sign-in'>
                         <SignIn/>
+                    </Route>
+                    <Route path='/sign-up'>
+                        <SignUp/>
                     </Route>
                     <Route
                         path='/'
