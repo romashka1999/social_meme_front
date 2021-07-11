@@ -1,15 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="94f2c9ff-8a7a-4fd4-97b0-64b55a2061cc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/modules/auth/components/footer/Footer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/auth/components/signUp/SignUp.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/auth/components/signUp/SignUp.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/components/CreateBackdrop.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/ad.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/gift.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/heart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/like.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/cover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/profile.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/auth/services/PrivateRoute.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/closeFriend/CloseFriend.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/closeFriend/closeFriend.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/feed/Feed.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/feed/feed.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/online/Online.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/online/online.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/post/Post.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/post/post.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/rightbar/Rightbar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/rightbar/rightbar.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/searchResult/SearchResult.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/searchResult/searchResult.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/share/Share.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/share/share.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/sidebar/Sidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/sidebar/sidebar.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/topbar/Topbar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/topbar/topbar.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/home/Home.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/home/home.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/profile/Profile.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/profile/profile.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/profile/services/dto/userSearchDto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/profile/services/users.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/signIn/SignIn.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/signUp/SignUp.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/auth/components/form/Form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/auth/components/form/Form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/auth/components/signIn/SignIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/auth/components/signIn/SignIn.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/auth/components/inputField/InputField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/auth/components/inputField/InputField.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/auth/components/signIn/SignIn.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signIn/SignIn.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/auth/components/signIn/SignIn.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/auth/components/signUp/SignUp.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/auth/components/signUp/SignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signUp/SignUp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/auth/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/auth/services/auth.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,9 +60,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -41,7 +82,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../romasi" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -51,7 +92,15 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\noface\Desktop\social_meme_front\src\pages" />
+      <recent name="C:\Users\noface\Desktop\social_meme_front\src" />
+      <recent name="C:\Users\noface\Desktop\social_meme_front\src\modules" />
+      <recent name="C:\Users\noface\Desktop\social_meme_front\public" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\noface\Desktop\social_meme_front\src\pages" />
+      <recent name="C:\Users\noface\Desktop\social_meme_front\public" />
       <recent name="C:\Users\noface\Desktop\social_meme_front\src\modules\auth\components" />
       <recent name="C:\Users\noface\Desktop\social_meme_front\src\modules\auth\components\signIn" />
     </key>
@@ -82,7 +131,12 @@
       <option name="presentableId" value="Default" />
       <updated>1618747512535</updated>
       <workItem from="1618747516694" duration="12441000" />
-      <workItem from="1621693467100" duration="14943000" />
+      <workItem from="1621693467100" duration="15337000" />
+      <workItem from="1622012410813" duration="5000" />
+      <workItem from="1622017434997" duration="29000" />
+      <workItem from="1622920552790" duration="75000" />
+      <workItem from="1624169347285" duration="18582000" />
+      <workItem from="1626014852724" duration="18755000" />
     </task>
     <servers />
   </component>

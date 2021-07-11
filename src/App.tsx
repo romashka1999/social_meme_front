@@ -1,33 +1,52 @@
-import React from 'react';
-import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import React, {useState} from 'react';
+import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 
-import './App.module.css';
-import SignIn from './modules/auth/components/signIn/SignIn';
 import classes from './App.module.css';
-import SignUp from "./modules/auth/components/signUp/SignUp";
+import SignIn from './pages/signIn/SignIn';
+import SignUp from "./pages/signUp/SignUp";
+import Profile from "./pages/profile/Profile";
+import PrivateRoute from "./modules/auth/services/PrivateRoute";
+import Home from "./pages/home/Home";
 
 const App = () => {
-    const isAuthenticated: boolean = localStorage.getItem('token') ? true : false;
+    const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem('token') ? true : false);
     return (
         <div className={classes.mainContent}>
             <Router>
                 <Switch>
-                    <Route path='/sign-in'>
-                        <SignIn/>
-                    </Route>
-                    <Route path='/sign-up'>
-                        <SignUp/>
-                    </Route>
                     <Route
                         path='/'
                         exact
                         render={() => {
                             return (
                                 isAuthenticated ?
-                                    <Redirect to='profile'/> :
+                                    <Redirect to='home'/> :
                                     <Redirect to='sign-in'/>
                             )
                         }}/>
+                    <Route path='/sign-in'>
+                        <SignIn setIsAuthenticated={setIsAuthenticated}/>
+                    </Route>
+                    <Route path='/sign-up'>
+                        <SignUp/>
+                    </Route>
+                    <PrivateRoute Component={Home} authed={isAuthenticated}
+                                  setIsAuthenticated={setIsAuthenticated}
+                                  path={'/home'}/>
+                    <PrivateRoute Component={Profile} authed={isAuthenticated}
+                                  setIsAuthenticated={setIsAuthenticated}
+                                  path={'/profile/:userId'}/>
+
+                    <Route path=''
+                           render={(props) => {
+                               props.history.replace(props.location)
+                               return (
+                                   isAuthenticated ?
+                                       <Redirect to='home'/> :
+                                       <Redirect to='sign-in'/>
+                               )
+                           }}>
+                    </Route>
                 </Switch>
             </Router>
         </div>

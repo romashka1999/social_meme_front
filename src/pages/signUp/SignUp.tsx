@@ -2,15 +2,13 @@ import {Avatar, Container, CssBaseline, Grid, makeStyles, Typography,} from "@ma
 import React, {Fragment, useState} from "react";
 import {useForm} from "react-hook-form";
 import {useHistory} from "react-router-dom";
-// import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from "yup";
 
-import CustomSnackBar, {SnackOptions, SnackSeverity} from "../../../../shared/components/CustomSnackBar";
-import {signUp as signUpService} from "../../services/auth.service";
-import Form from '../form/Form';
+import CustomSnackBar, {SnackOptions, SnackSeverity} from "../../shared/components/CustomSnackBar";
+import {signUp as signUpService} from "../../modules/auth/services/auth.service";
+import Form from '../../modules/auth/components/form/Form';
 import './SignUp.css'
-import CreateBackdrop from "../../../../shared/components/CreateBackdrop";
-import {SignUpDto} from "../../dto/sign-up.dto";
+import CreateBackdrop from "../../shared/components/CreateBackdrop";
+import {SignUpDto} from "../../modules/auth/dto/sign-up.dto";
 
 interface Props {
     history: any;
@@ -33,52 +31,60 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const signUpInputData = [
+    {
+        label: 'firstName',
+        id: 'firstName',
+        name: 'firstName',
+        autoComplete: 'firstName',
+        isAutofocus: true,
+        type: 'text'
+
+    },
+    {
+        label: 'lastName',
+        id: 'lastName',
+        name: 'lastName',
+        autoComplete: 'lastName',
+        isAutofocus: false,
+        type: 'text'
+
+    },
+    {
+        label: 'email',
+        id: 'email',
+        name: 'email',
+        autoComplete: 'email',
+        isAutofocus: false,
+        type: 'email'
+    },
+    {
+        label: 'password',
+        id: 'password',
+        name: 'password',
+        autoComplete: 'current-password',
+        isAutofocus: false,
+        type: 'password'
+    },
+
+]
+
 const SignUp: React.FC<Partial<Props>> = (props) => {
     const classes = useStyles();
     const history = useHistory();
     const [loading, setLoading] = useState<boolean>(false);
+    const [registeredSuccessfully, setRegisteredSuccessfully] = useState<boolean>(false);
+
     const [snackOptions, setSnackOptions] = useState<SnackOptions>({
         open: false,
         message: "",
         severity: SnackSeverity.INFO,
     });
+
     const {register, handleSubmit, reset, errors} = useForm(/*{ resolver: yupResolver(signUpValidationSchema) }*/);
 
-    const signUpInputData = [
-        {
-            label: 'firstName',
-            id: 'firstName',
-            name: 'firstName',
-            autoComplete: 'firstName',
-            isAutofocus: true,
-        },
-        {
-            label: 'lastName',
-            id: 'lastName',
-            name: 'lastName',
-            autoComplete: 'lastName',
-            isAutofocus: false,
-        },
-        {
-            label: 'email',
-            id: 'email',
-            name: 'email',
-            autoComplete: 'email',
-            isAutofocus: false,
-        },
-        {
-            label: 'password',
-            id: 'password',
-            name: 'password',
-            autoComplete: 'current-password',
-            isAutofocus: false,
-        },
-
-    ]
 
     const onSubmitSignUp = async (data: any) => {
-        console.log("data :>> ", data);
-        console.log("errors :>> ", errors);
         try {
             const signUpDto: SignUpDto = {
                 firstName: data.firstName,
@@ -88,23 +94,30 @@ const SignUp: React.FC<Partial<Props>> = (props) => {
             };
             setLoading(true);
             const response = await signUpService(signUpDto);
-            const {access_token} = response.data;
-            localStorage.setItem("token", access_token);
-            history.push("/profile");
+            if (response.status === 201) {
+                setRegisteredSuccessfully(true)
+            }
+            setSnackOptions({
+                message: "Registration Successful",
+                severity: SnackSeverity.SUCCESS,
+                open: true
+            });
+
         } catch (error) {
             if (error.response) {
-                reset();
-                console.log("error.response :>> ", error.response);
-                let errorMessage = "validation error";
-                switch (error.response.data.message) {
-                    case "INVALID_CREDENTIALS":
-                        errorMessage = "invalid credentials";
+                if (Array.isArray(error.response.data.message)) {
+                    setSnackOptions({
+                        message: error.response.data.message[0],
+                        severity: SnackSeverity.ERROR,
+                        open: true,
+                    });
+                } else {
+                    setSnackOptions({
+                        message: error.response.data.message,
+                        severity: SnackSeverity.ERROR,
+                        open: true,
+                    });
                 }
-                setSnackOptions({
-                    message: errorMessage,
-                    severity: SnackSeverity.ERROR,
-                    open: true,
-                });
             }
         } finally {
             setLoading(false);
@@ -117,6 +130,9 @@ const SignUp: React.FC<Partial<Props>> = (props) => {
                 open: false,
             };
         });
+        if (registeredSuccessfully) {
+            history.push("/sign-in");
+        }
     }
 
     return (

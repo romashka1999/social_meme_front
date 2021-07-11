@@ -10,6 +10,7 @@ interface InputFiledValues {
     name: string;
     autoComplete: string;
     isAutofocus: boolean;
+    type: string;
 
 }
 
