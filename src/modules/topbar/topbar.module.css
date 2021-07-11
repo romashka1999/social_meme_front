@@ -116,3 +116,18 @@
 .dropDown:hover {
     background: #f1e7e7;
 }
+
+.searchResultWrapper {
+    background: gray;
+    left: 30px;
+    position: absolute;
+    bottom: -50vh;
+    width: 92%;
+    height: 50vh;
+}
+
+.searchResult {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}

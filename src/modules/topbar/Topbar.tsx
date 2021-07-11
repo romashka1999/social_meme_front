@@ -50,7 +50,7 @@ const Topbar = () => {
                                placeholder="Search for Friend, Posts or Video" className={classes.searchInput}/>
                         {
                             usersDto ?
-                                <div>
+                                <div className={classes.searchResultWrapper}>
                                     <ul className={classes.searchResult}>
                                         {
                                             usersDto.users.map(user => (
