@@ -9,6 +9,7 @@ import Rightbar from "../../modules/rightbar/Rightbar";
 import {followUser, getProfile, unFollowUser} from "./services/users.service";
 import {Button} from "@material-ui/core";
 import {Edit} from "@material-ui/icons";
+import {getFolloweesPosts, getUserPosts} from "../../modules/feed/posts.service";
 
 interface Profile {
     id: number;
@@ -24,6 +25,8 @@ interface Profile {
 
 const Profile: React.FC = (props) => {
 
+    const [posts, setPosts] = useState([])
+    const [postsCount, setPostsCount] = useState(0);
     const [profile, setProfile] = useState<Profile>();
     const {userId} = useParams<{ userId: string }>();
     const isMe = +userId === JSON.parse(localStorage.getItem('user') || '{}').id;
@@ -33,6 +36,19 @@ const Profile: React.FC = (props) => {
                 setProfile(response.data)
             });
     }, []);
+
+
+
+    useEffect(() => {
+        getUserPosts(0, 10, userId)
+            .then(response => {
+                console.log('response.data :>> ', response.data);
+                setPosts(response.data.posts);
+                setPostsCount(response.data.count)
+                console.log(`posts`, posts)
+            })
+
+    }, [])
 
     const updateFollowStatus = () => {
         console.log(profile?.existsFollowing);
@@ -74,7 +90,7 @@ const Profile: React.FC = (props) => {
                         </div>
                     </div>
                     <div className={classes.profileRightBottom}>
-                        <Feed/>
+                        <Feed posts={posts}/>
                         <Rightbar isHome={false}
                                   follower={profile?.followersCount}
                                   following={profile?.followingsCount}/>

@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94f2c9ff-8a7a-4fd4-97b0-64b55a2061cc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/searchResult/SearchResult.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/searchResult/SearchResult.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/searchResult/searchResult.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/searchResult/searchResult.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/feed/Feed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/feed/Feed.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/feed/posts.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/feed/posts.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/post/Post.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/post/Post.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/share/Share.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/share/Share.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/share/share.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/share/share.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/topbar/Topbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/topbar/Topbar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/topbar/topbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/topbar/topbar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/home/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile/Profile.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +101,7 @@
       <workItem from="1622017434997" duration="29000" />
       <workItem from="1622920552790" duration="75000" />
       <workItem from="1624169347285" duration="18582000" />
-      <workItem from="1626014852724" duration="20958000" />
+      <workItem from="1626014852724" duration="28206000" />
     </task>
     <servers />
   </component>

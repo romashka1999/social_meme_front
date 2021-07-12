@@ -41,7 +41,7 @@ const Topbar = () => {
             <Redirect to={'/sign-in'}/> :
             <div className={classes.topbarContainer}>
                 <div className={classes.topbarLeft}>
-                    <span className={classes.logo}>Social Meme</span>
+                    <span className={classes.logo} onClick={() => redirect('/home')}>Social Meme</span>
                 </div>
                 <div className={classes.topbarCenter}>
                     <div className={classes.searchBar}>
