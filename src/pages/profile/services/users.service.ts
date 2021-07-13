@@ -25,3 +25,7 @@ export const uploadCoverPictureToServer = (formData: FormData): Promise<AxiosRes
 export const uploadProfilePictureToServer = (formData: FormData): Promise<AxiosResponse> => {
     return axiosInstance.patch(`/users/update-profile-img`, formData);
 }
+
+export const getFollowees = (userId: string, page: number = 0, pageSize: number = 10): Promise<AxiosResponse> => {
+    return axiosInstance.get(`/follows/user-followees/${userId}?page=${page}&pageSize=${pageSize}`);
+}

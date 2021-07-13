@@ -38,6 +38,12 @@ const Topbar = () => {
             .then(response => setUsersDto(response.data));
     }
 
+    const checkClickedElement = (event: any) => {
+        setTimeout(() => {
+            setIsSearchVisible(false);
+        }, 100)
+    }
+
     return (
         isLoggedOut ?
             <Redirect to={'/sign-in'}/> :
@@ -49,7 +55,7 @@ const Topbar = () => {
                     <div className={classes.searchBar}>
                         <Search className={classes.searchIcon}/>
                         <input onChange={getMatchingUsers}
-                               onBlur={() => setIsSearchVisible(false)}
+                               onBlur={checkClickedElement}
                                placeholder="Search for Friend, Posts or Video" className={classes.searchInput}/>
                         {
                             usersDto && isSearchVisible ?

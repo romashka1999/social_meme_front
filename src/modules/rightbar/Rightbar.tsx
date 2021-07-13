@@ -1,31 +1,35 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import classes from './rightbar.module.css';
 import {Users} from '../../test';
 import Online from "../online/Online";
+import {getFollowees} from "../../pages/profile/services/users.service";
 
 interface Props {
     isHome: boolean;
     follower?: number;
     following?: number;
+    userId?: string;
+    users?: any[];
 }
 
-const Rightbar: React.FC<Props> = ({isHome, follower, following}) => {
+const Rightbar: React.FC<Props> = ({isHome, follower, following, userId, users}) => {
+    const [followees, setFollowees] = useState<any>();
+    useEffect(() => {
+        if(!userId) return;
+        getFollowees(userId)
+            .then(response => setFollowees(response.data.followees))
+    }, [userId])
+
     const HomeRightBar = () => {
         return (
             <>
-                <div className={classes.birthdayContainer}>
-                    <img className={classes.birthdayImage} src="assets/gift.png" alt="gift"/>
-                    <span className={classes.birthdayText}>
-                        <b>Irakli</b> and <b>2 other friends</b> have a birthday today
-                    </span>
-                </div>
                 <img className={classes.rightbarAd} src="assets/ad.jpg" alt="ad"/>
                 <h4 className={classes.rightbarTitle}>Online Friends</h4>
                 <ul className={classes.rightbarFriendList}>
 
                     {
-                        Users.map(user => (
+                        users && users.map(user => (
                             <Online key={user.id} {...user}/>
                         ))
                     }
@@ -49,44 +53,21 @@ const Rightbar: React.FC<Props> = ({isHome, follower, following}) => {
                         <span className={classes.rightbarInfoValue}> {following} </span>
                     </div>
                 </div>
-                <h4 className={classes.rightbarTitle}>User Friends</h4>
+                <h4 className={classes.rightbarTitle}>User Followees</h4>
                 <div className={classes.rightbarFollowings}>
-                    <div className={classes.rightbarFollowing}>
-                        <img className={classes.rightbarFollowingImage}
-                             src="https://cdn.britannica.com/s:800x450,c:crop/34/180334-138-4235A017/subordinate-meerkat-pack.jpg"
-                             alt="following"/>
-                        <span className={classes.rightbarFollowingName}>John test</span>
-                    </div>
-                    <div className={classes.rightbarFollowing}>
-                        <img className={classes.rightbarFollowingImage}
-                             src="https://cdn.britannica.com/s:800x450,c:crop/34/180334-138-4235A017/subordinate-meerkat-pack.jpg"
-                             alt="following"/>
-                        <span className={classes.rightbarFollowingName}>John test</span>
-                    </div>
-                    <div className={classes.rightbarFollowing}>
-                        <img className={classes.rightbarFollowingImage}
-                             src="https://cdn.britannica.com/s:800x450,c:crop/34/180334-138-4235A017/subordinate-meerkat-pack.jpg"
-                             alt="following"/>
-                        <span className={classes.rightbarFollowingName}>John test</span>
-                    </div>
-                    <div className={classes.rightbarFollowing}>
-                        <img className={classes.rightbarFollowingImage}
-                             src="https://cdn.britannica.com/s:800x450,c:crop/34/180334-138-4235A017/subordinate-meerkat-pack.jpg"
-                             alt="following"/>
-                        <span className={classes.rightbarFollowingName}>John test</span>
-                    </div>
-                    <div className={classes.rightbarFollowing}>
-                        <img className={classes.rightbarFollowingImage}
-                             src="https://cdn.britannica.com/s:800x450,c:crop/34/180334-138-4235A017/subordinate-meerkat-pack.jpg"
-                             alt="following"/>
-                        <span className={classes.rightbarFollowingName}>John test</span>
-                    </div>
-                    <div className={classes.rightbarFollowing}>
-                        <img className={classes.rightbarFollowingImage}
-                             src="https://cdn.britannica.com/s:800x450,c:crop/34/180334-138-4235A017/subordinate-meerkat-pack.jpg"
-                             alt="following"/>
-                        <span className={classes.rightbarFollowingName}>John test</span>
-                    </div>
+                    {
+                        followees && followees.map((followee: any) => (
+                            <div className={classes.rightbarFollowing} key={followee.id}>
+                                <img className={classes.rightbarFollowingImage}
+                                     src={followee.profileImgUrl || '/profile.jpg'}
+                                     alt="following"/>
+                                <span className={classes.rightbarFollowingName}>
+                                    {`${followee.firstName} ${followee.lastName}`}
+                                </span>
+                            </div>
+                        ))
+
+                    }
                 </div>
 
             </>

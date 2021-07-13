@@ -14,6 +14,7 @@ const Home = () => {
     const [posts, setPosts] = useState<any[]>([]);
     const [postsCount, setPostsCount] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [onlineUsers, setOnlineUsers] = useState();
 
     useEffect(() => {
         getFolloweesPosts(0, 10).then((response) => {
@@ -40,9 +41,14 @@ const Home = () => {
 
         socket.on("postCreated", (post) => {
             setPosts((oldPosts) => {
-                return [...oldPosts, post]
+                return [post ,...oldPosts]
             });
         });
+
+        socket.emit("onlineFriends");
+        socket.on('onlineFriends', (users) => {
+            setOnlineUsers(users);
+        })
     }, []);
 
     return (
@@ -51,7 +57,7 @@ const Home = () => {
             <div className={classes.homeContainer}>
                 <Sidebar />
                 <Feed posts={posts} />
-                <Rightbar isHome={true} />
+                <Rightbar isHome={true} users={onlineUsers} />
             </div>
         </>
     );

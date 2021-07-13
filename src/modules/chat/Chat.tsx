@@ -28,7 +28,8 @@ const Chat = () => {
         const button = document.querySelector('.sc-launcher') as HTMLElement;
         const header = document.querySelector('.sc-header') as HTMLElement;
         button.style.display = 'none';
-        header.style.background = '#1877f3';
+        // header.style.background = '#1877f3';
+        button.style.background = '#1877f3';
         setButton(button);
     }, [])
 
@@ -38,10 +39,10 @@ const Chat = () => {
     // useEffect(() => {
     //     socket = io(CONNECTION_PORT, channel);
     // }, [CONNECTION_PORT])
-
-    const connectToRoom = () => {
-        socket.emit('join-room');
-    }
+    //
+    // const connectToRoom = () => {
+    //     socket.emit('join-room');
+    // }
 
     const onMessageWasSent = (message: string) => {
         setChatData(chatData => ({

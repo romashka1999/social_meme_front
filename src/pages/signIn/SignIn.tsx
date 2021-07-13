@@ -60,88 +60,87 @@ const signInInputData = [
 ]
 
 const SignIn: React.FC<Props> = ({setIsAuthenticated}) => {
-        const classes = useStyles();
-        const history = useHistory();
-        const [loading, setLoading] = useState<boolean>(false);
-        const [snackOptions, setSnackOptions] = useState<SnackOptions>({
-            open: false,
-            message: "",
-            severity: SnackSeverity.INFO,
-        });
-        const {register, handleSubmit, reset} = useForm(/*{ resolver: yupResolver(signInValidationSchema) }*/);
+    const classes = useStyles();
+    const history = useHistory();
+    const [loading, setLoading] = useState<boolean>(false);
+    const [snackOptions, setSnackOptions] = useState<SnackOptions>({
+        open: false,
+        message: "",
+        severity: SnackSeverity.INFO,
+    });
+    const {register, handleSubmit, reset} = useForm(/*{ resolver: yupResolver(signInValidationSchema) }*/);
 
-        const onSubmitSignIn = async (data: any) => {
-                console.log("data :>> ", data);
-                try {
-                    const signInDto: SignInDto = {
-                        email: data.email,
-                        password: data.password,
-                    };
-                    setLoading(true);
-                    const response = await signInService(signInDto);
-                    const {accessToken, user} = response.data;
-                    localStorage.setItem("token", accessToken);
-                    localStorage.setItem("user", JSON.stringify(user));
-                    setIsAuthenticated(true);
-                    history.push("/home");
-                } catch (error) {
-                    if (error.response) {
-                        if (Array.isArray(error.response.data.message)) {
-                            setSnackOptions({
-                                message: error.response.data.message[0],
-                                severity: SnackSeverity.ERROR,
-                                open: true,
-                            });
-                        } else {
-                            setSnackOptions({
-                                message: error.response.data.message,
-                                severity: SnackSeverity.ERROR,
-                                open: true,
-                            });
-                        }
-                    }
-                } finally {
-                    setLoading(false);
-                }
-            }
-        ;
-        const onSnackBarCloseHandler = () => {
-            setSnackOptions((val) => {
-                return {
-                    ...val,
-                    open: false,
+    const onSubmitSignIn = async (data: any) => {
+            console.log("data :>> ", data);
+            try {
+                const signInDto: SignInDto = {
+                    email: data.email,
+                    password: data.password,
                 };
-            });
+                setLoading(true);
+                const response = await signInService(signInDto);
+                const {accessToken, user} = response.data;
+                localStorage.setItem("token", accessToken);
+                localStorage.setItem("user", JSON.stringify(user));
+                setIsAuthenticated(true);
+                history.push("/home");
+            } catch (error) {
+                if (error.response) {
+                    if (Array.isArray(error.response.data.message)) {
+                        setSnackOptions({
+                            message: error.response.data.message[0],
+                            severity: SnackSeverity.ERROR,
+                            open: true,
+                        });
+                    } else {
+                        setSnackOptions({
+                            message: error.response.data.message,
+                            severity: SnackSeverity.ERROR,
+                            open: true,
+                        });
+                    }
+                }
+            } finally {
+                setLoading(false);
+            }
         }
-
-        return (
-            <Fragment>
-                <CreateBackdrop loading={loading} className={classes.backdrop}/>
-                <Container component="main" maxWidth="xs" className={classes.container}>
-                    <CssBaseline/>
-                    <Grid container alignItems="center" direction="column">
-                        <Avatar>
-                            <img src={process.env.PUBLIC_URL + 'logo.svg'}
-                                 className='sign_in_logo' alt='logo'/>
-                        </Avatar>
-                        <Typography component="h1">Sign in</Typography>
-                    </Grid>
-                    <Form
-                        register={register}
-                        onSubmit={onSubmitSignIn}
-                        handleSubmit={handleSubmit}
-                        inputFieldData={signInInputData}
-                        buttonText='Sign in'
-                        footerValues={footerData}
-                    />
-                </Container>
-                <CustomSnackBar
-                    snackOptions={snackOptions}
-                    setClose={onSnackBarCloseHandler}
-                />
-            </Fragment>
-        );
+    ;
+    const onSnackBarCloseHandler = () => {
+        setSnackOptions((val) => {
+            return {
+                ...val,
+                open: false,
+            };
+        });
     }
-;
+
+    return (
+        <Fragment>
+            <CreateBackdrop loading={loading} className={classes.backdrop}/>
+            <Container component="main" maxWidth="xs" className={classes.container}>
+                <CssBaseline/>
+                <Grid container alignItems="center" direction="column">
+                    <Avatar>
+                        <img src={process.env.PUBLIC_URL + 'logo.svg'}
+                             className='sign_in_logo' alt='logo'/>
+                    </Avatar>
+                    <Typography component="h1">Sign in</Typography>
+                </Grid>
+                <Form
+                    register={register}
+                    onSubmit={onSubmitSignIn}
+                    handleSubmit={handleSubmit}
+                    inputFieldData={signInInputData}
+                    buttonText='Sign in'
+                    footerValues={footerData}
+                />
+            </Container>
+            <CustomSnackBar
+                snackOptions={snackOptions}
+                setClose={onSnackBarCloseHandler}
+            />
+        </Fragment>
+    );
+};
 
 export default SignIn;

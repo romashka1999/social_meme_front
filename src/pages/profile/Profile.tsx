@@ -43,7 +43,7 @@ const Profile: React.FC = (props) => {
             .then(response => {
                 setProfile(response.data)
             });
-    }, []);
+    }, [userId]);
 
 
     useEffect(() => {
@@ -177,6 +177,7 @@ const Profile: React.FC = (props) => {
                     <div className={classes.profileRightBottom}>
                         <Feed posts={posts}/>
                         <Rightbar isHome={false}
+                                  userId={userId}
                                   follower={profile?.followersCount}
                                   following={profile?.followingsCount}/>
                     </div>
