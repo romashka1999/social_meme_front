@@ -68,11 +68,10 @@ const SignIn: React.FC<Props> = ({setIsAuthenticated}) => {
             message: "",
             severity: SnackSeverity.INFO,
         });
-        const {register, handleSubmit, reset, errors} = useForm(/*{ resolver: yupResolver(signInValidationSchema) }*/);
+        const {register, handleSubmit, reset} = useForm(/*{ resolver: yupResolver(signInValidationSchema) }*/);
 
         const onSubmitSignIn = async (data: any) => {
                 console.log("data :>> ", data);
-                console.log("errors :>> ", errors);
                 try {
                     const signInDto: SignInDto = {
                         email: data.email,
