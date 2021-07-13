@@ -5,24 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94f2c9ff-8a7a-4fd4-97b0-64b55a2061cc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/modules/chat/Chat.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/chat/chat.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/chat/connection/socketConnection.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/feed/Feed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/feed/Feed.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/share/Share.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/share/Share.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/share/share.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/share/share.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/sidebar/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/sidebar/Sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/searchResult/SearchResult.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/searchResult/SearchResult.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/searchResult/searchResult.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/searchResult/searchResult.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/topbar/Topbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/topbar/Topbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/topbar/topbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/topbar/topbar.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/home/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile/Profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/profile/profile.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile/profile.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/profile/services/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile/services/users.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/utils/axios.util.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/utils/axios.util.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +97,7 @@
       <workItem from="1622017434997" duration="29000" />
       <workItem from="1622920552790" duration="75000" />
       <workItem from="1624169347285" duration="18582000" />
-      <workItem from="1626014852724" duration="52285000" />
+      <workItem from="1626014852724" duration="56782000" />
     </task>
     <servers />
   </component>

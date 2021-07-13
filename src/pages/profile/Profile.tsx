@@ -81,7 +81,7 @@ const Profile: React.FC = (props) => {
         const reader = new FileReader();
         input.click();
         input.onchange = (event: any) => {
-            if (event.target.files.length === 1) {
+            if (event.target?.files?.length === 1) {
                 uploadProfileToServer(event.target.files[0]);
                 reader.addEventListener('load', (event: any) => {
                     image.src = event.target.result;
@@ -97,7 +97,7 @@ const Profile: React.FC = (props) => {
         const reader = new FileReader();
         input.click();
         input.onchange = (event: any) => {
-            if (event.target.files.length === 1) {
+            if (event.target?.files?.length === 1) {
                 uploadCoverToServer(event.target.files[0]);
                 reader.addEventListener('load', (event: any) => {
                     image.src = event.target.result;

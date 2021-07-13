@@ -10,8 +10,8 @@ interface User {
 
 const SearchResult: React.FC<User> = ({id, firstName, lastName, profileImgUrl}) => {
     return (
-        <li>
-            <img className={classes.personsProfile} src="/cover.png" alt="person"/>
+        <li className={classes.searchResult}>
+            <img className={classes.personsProfile} src={profileImgUrl || "/cover.png"} alt="person"/>
             <div className={classes.personsName}>{firstName} {lastName}</div>
         </li>
     );

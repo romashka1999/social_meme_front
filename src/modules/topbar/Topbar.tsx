@@ -11,6 +11,7 @@ import SearchResult from "../searchResult/SearchResult";
 const Topbar = () => {
     const [isDropDownVisible, setDropDownVisible] = useState<boolean>(false);
     const [isLoggedOut, setIsloggedOut] = useState<boolean>(false);
+    const [isSearchVisible, setIsSearchVisible] = useState<boolean>(false);
     const history = useHistory();
     const user = JSON.parse(localStorage.getItem('user') || '{}');
 
@@ -32,6 +33,7 @@ const Topbar = () => {
 
     const getMatchingUsers = (event: any) => {
         if (!event.target.value) return;
+        setIsSearchVisible(true);
         searchUsers(event.target.value)
             .then(response => setUsersDto(response.data));
     }
@@ -47,9 +49,10 @@ const Topbar = () => {
                     <div className={classes.searchBar}>
                         <Search className={classes.searchIcon}/>
                         <input onChange={getMatchingUsers}
+                               onBlur={() => setIsSearchVisible(false)}
                                placeholder="Search for Friend, Posts or Video" className={classes.searchInput}/>
                         {
-                            usersDto ?
+                            usersDto && isSearchVisible ?
                                 <div className={classes.searchResultWrapper}>
                                     <ul className={classes.searchResult}>
                                         {
