@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import io from 'socket.io-client';
 
 import classes from './home.module.css';
 import Topbar from "../../modules/topbar/Topbar";
@@ -27,9 +28,16 @@ const Home = () => {
 
     }, []);
 
-    useEffect(() => {
+    const postSocketConnection = () => {
+        console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+        const socket = io('http://96e8fc7a653e.ngrok.io')
 
-    }, [])
+        socket.on('joinRoom', () => {
+            console.log('aman mitxra join roomooo');
+        })
+    }
+
+    postSocketConnection();
 
     return (
         <>
