@@ -7,6 +7,8 @@ import Feed from "../../modules/feed/Feed";
 import Rightbar from "../../modules/rightbar/Rightbar";
 import {getFolloweesPosts} from "../../modules/feed/posts.service";
 
+let socket;
+const URL = 'http://f4fb68c685a2.ngrok.io/';
 
 const Home = () => {
     const [posts, setPosts] = useState([])
@@ -22,6 +24,10 @@ const Home = () => {
                 setLoading(false);
                 console.log(`posts`, posts)
             })
+
+    }, []);
+
+    useEffect(() => {
 
     }, [])
 

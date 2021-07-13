@@ -64,14 +64,20 @@ const Topbar = () => {
                 </div>
                 <div className={classes.topbarRight}>
                     <div className={classes.topbarLinks}>
+                        <span className={classes.topbarLink} onClick={() => redirect('/home')}>Home</span>
                         <span className={classes.topbarLink}
-                              onClick={() => redirect(`/profile/${user.id}`)}>Homepage</span>
-                        <span className={classes.topbarLink} onClick={() => redirect('/home')}>Timeline</span>
+                              onClick={() => redirect(`/profile/${user.id}`)}>Profile</span>
                     </div>
                     <div className={classes.topbarIcons}>
                         <div className={classes.topbarIconItem}>
                             <Person/>
                             <span className={classes.topbarIconBadge}>1</span>
+                            <div className={classes.dropDownPerson}>
+                                <div className={classes.dialog}>
+                                    <div className={classes.arrowPerson}>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div className={classes.topbarIconItem}>
                             <Chat/>
@@ -85,8 +91,8 @@ const Topbar = () => {
                     <div className={classes.topRightOptions}>
                         <img className={classes.topbarImg}
                              onClick={() => toggleDropDown(!isDropDownVisible)}
-                             src="https://ath2.unileverservices.com/wp-content/uploads/sites/4/2020/02/IG-annvmariv-1024x1016.jpg"
-                             alt="girl"/>
+                             src={user.profileImgUrl || '/profile.jpg'}
+                             alt="profile"/>
                         {
                             isDropDownVisible ?
                                 <div className={classes.dropDown}

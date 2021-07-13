@@ -6,12 +6,13 @@ import {createPost} from "../feed/posts.service";
 
 const Share = () => {
     const [file, setFile] = useState<any>();
-    const [content, setContent] = useState<string>("");
+    const [content, setContent] = useState<string>('');
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
 
     const openInputDialog = (event: any) => {
         const input = document.querySelector('#share_input_photo_and_video') as HTMLInputElement;
-        const reader = new FileReader();
         const image = document.querySelector('#uploaded_image') as HTMLImageElement;
+        const reader = new FileReader();
         input.click();
         input.onchange = (event: any) => {
             if (event.target.files.length === 1) {
@@ -47,12 +48,12 @@ const Share = () => {
             <div className={classes.shareWrapper}>
                 <div className={classes.shareTop}>
                     <img className={classes.shareProfileImage}
-                         src="https://cdn.britannica.com/22/206222-131-E921E1FB/Domestic-feline-tabby-cat.jpg"
+                         src={user.profileImgUrl || '/profile.jpg'}
                          alt="post"/>
                     <div className={classes.previewWrapper}>
                         <input placeholder="Whats in your mind" className={classes.shareInput}
                                onChange={(event: any) => setContent(event.target.value)}/>
-                        <img src="" alt="preview" className={classes.uploadedImage} id='uploaded_image'/>
+                        <img src="" alt="preview" hidden={true} className={classes.uploadedImage} id='uploaded_image'/>
                     </div>
                 </div>
                 <hr className={classes.shareHr}/>

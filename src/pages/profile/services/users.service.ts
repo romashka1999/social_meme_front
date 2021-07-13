@@ -17,3 +17,11 @@ export const unFollowUser = (userId: string): Promise<AxiosResponse> => {
 export const searchUsers = (search: string, page: number = 0, pageSize: number = 10): Promise<AxiosResponse> => {
     return axiosInstance.get(`/users/search?search=${search}&page=${page}&pageSize=${pageSize}`);
 }
+
+export const uploadCoverPictureToServer = (formData: FormData): Promise<AxiosResponse> => {
+    return axiosInstance.patch(`/users/update-cover-img`, formData);
+}
+
+export const uploadProfilePictureToServer = (formData: FormData): Promise<AxiosResponse> => {
+    return axiosInstance.patch(`/users/update-profile-img`, formData);
+}

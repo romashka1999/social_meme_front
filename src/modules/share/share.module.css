@@ -89,3 +89,9 @@
     width: 80%;
     height: 80%;
 }
+
+.previewWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
