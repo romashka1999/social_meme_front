@@ -11,6 +11,7 @@
       <change beforePath="$PROJECT_DIR$/src/modules/topbar/Topbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/topbar/Topbar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/topbar/topbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/topbar/topbar.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/home/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile/Profile.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +98,7 @@
       <workItem from="1622017434997" duration="29000" />
       <workItem from="1622920552790" duration="75000" />
       <workItem from="1624169347285" duration="18582000" />
-      <workItem from="1626014852724" duration="56782000" />
+      <workItem from="1626014852724" duration="57619000" />
     </task>
     <servers />
   </component>

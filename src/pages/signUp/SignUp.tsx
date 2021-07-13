@@ -81,7 +81,7 @@ const SignUp: React.FC<Partial<Props>> = (props) => {
         severity: SnackSeverity.INFO,
     });
 
-    const {register, handleSubmit, reset, errors} = useForm(/*{ resolver: yupResolver(signUpValidationSchema) }*/);
+    const {register, handleSubmit, reset} = useForm(/*{ resolver: yupResolver(signUpValidationSchema) }*/);
 
 
     const onSubmitSignUp = async (data: any) => {
