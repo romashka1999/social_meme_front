@@ -16,7 +16,7 @@ interface Props {
 const Rightbar: React.FC<Props> = ({isHome, follower, following, userId, users}) => {
     const [followees, setFollowees] = useState<any>();
     useEffect(() => {
-        if(!userId) return;
+        if (!userId) return;
         getFollowees(userId)
             .then(response => setFollowees(response.data.followees))
     }, [userId])
@@ -24,7 +24,7 @@ const Rightbar: React.FC<Props> = ({isHome, follower, following, userId, users})
     const HomeRightBar = () => {
         return (
             <>
-                <img className={classes.rightbarAd} src="assets/ad.jpg" alt="ad"/>
+                <img className={classes.rightbarAd} src="/assets/ad.jpg" alt="ad"/>
                 <h4 className={classes.rightbarTitle}>Online Friends</h4>
                 <ul className={classes.rightbarFriendList}>
 
@@ -46,7 +46,7 @@ const Rightbar: React.FC<Props> = ({isHome, follower, following, userId, users})
                 <div className={classes.rightbarInfo}>
                     <div className={classes.rightbarInfoItem}>
                         <span className={classes.rightbarInfoKey}>Follower: </span>
-                        <span className={classes.rightbarInfoValue}>{ follower }</span>
+                        <span className={classes.rightbarInfoValue}>{follower}</span>
                     </div>
                     <div className={classes.rightbarInfoItem}>
                         <span className={classes.rightbarInfoKey}>Following: </span>

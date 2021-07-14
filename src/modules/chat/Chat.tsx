@@ -4,51 +4,92 @@ import {Launcher} from 'popup-chat-react';
 
 
 import classes from './chat.module.css';
+import {getMessages, getMessagesId, sendMessageBack} from "../../pages/profile/services/users.service";
 
-let socket: any;
-const CONNECTION_PORT = 'localhost:3000/';
 
 interface Props {
-    messages?: Array<any>;
-    channel?: string;
-
+    userId: string;
+    socket: any;
 }
 
-const Chat = () => {
+
+
+const Chat: React.FC<Props> = ({userId, socket}) => {
+    const [id, setId] = useState<string>();
+    const [room, setRoom] = useState('');
+    const [userName, setUserName] = useState('');
+    const [button, setButton] = useState<HTMLElement>();
+
+    const currentUserId = JSON.parse(localStorage.getItem('user') || '{}').id;
 
     const [chatData, setChatData] = useState({
         messageList: [],
         newMessagesCount: 0,
-        isOpen: false,
+        isOpen: true,
         fileUpload: false,
     });
-    const [button, setButton] = useState<HTMLElement>();
+
+    useEffect(() => {
+        if(!socket) return;
+        socket.on("messageCreated", (message: any) => {
+
+            const newMessage = {
+                author: message.userId === currentUserId ? 'me': 'them',
+                type: 'text',
+                data: {text: message.content}
+            }
+            setChatData(prevState => {
+                return {
+                    ...prevState,
+                    messageList: [...prevState.messageList, newMessage]
+                } as any
+            })
+
+        });
+    }, [socket])
+
+    useEffect(() => {
+        getMessagesId(userId)
+            .then(response => setId(response.data._id));
+
+    }, [])
+
+
+    useEffect(() => {
+        if(!id) return;
+        getMessages(id)
+            .then(response => {
+                const newMessages = response.data.reverse().map((message: any) => {
+                    return {
+                        author: message.userId === currentUserId ? 'me': 'them',
+                        type: 'text',
+                        data: {text: message.content}
+                    }
+                })
+                setChatData(prevState => {
+                    return {
+                        ...prevState,
+                        messageList: [...prevState.messageList, ...newMessages]
+                    } as any
+                })
+            })
+    }, [id])
+
+
 
     useEffect(() => {
         const button = document.querySelector('.sc-launcher') as HTMLElement;
         const header = document.querySelector('.sc-header') as HTMLElement;
         button.style.display = 'none';
-        // header.style.background = '#1877f3';
-        button.style.background = '#1877f3';
+        header.style.background = '#1877f3';
         setButton(button);
     }, [])
 
-    const [room, setRoom] = useState('');
-    const [userName, setUserName] = useState('');
 
-    // useEffect(() => {
-    //     socket = io(CONNECTION_PORT, channel);
-    // }, [CONNECTION_PORT])
-    //
-    // const connectToRoom = () => {
-    //     socket.emit('join-room');
-    // }
-
-    const onMessageWasSent = (message: string) => {
-        setChatData(chatData => ({
-            ...chatData,
-            messageList: [...chatData.messageList, message]
-        }) as any);
+    const onMessageWasSent = (message: any) => {
+        console.log(message);
+        sendMessageBack(id! ,message.data.text)
+            .then(console.log);
     }
 
     const sendMessage = (text: string) => {

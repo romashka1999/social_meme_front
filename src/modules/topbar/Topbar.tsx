@@ -9,6 +9,21 @@ import SearchResult from "../searchResult/SearchResult";
 
 
 const Topbar = () => {
+    const [personNotification, setPersonNotification] = useState({
+        notificationCount: 1,
+        isOpen: false
+    });
+
+    const [chatNotification, setChatNotification] = useState({
+        notificationCount: 2,
+        isOpen: false
+    });
+
+    const [newsNotification, setNewsNotification] = useState({
+        notificationCount: 1,
+        isOpen: false
+    });
+
     const [isDropDownVisible, setDropDownVisible] = useState<boolean>(false);
     const [isLoggedOut, setIsloggedOut] = useState<boolean>(false);
     const [isSearchVisible, setIsSearchVisible] = useState<boolean>(false);
@@ -42,6 +57,12 @@ const Topbar = () => {
         setTimeout(() => {
             setIsSearchVisible(false);
         }, 100)
+    }
+
+    const openNotification = (handler: Function) => {
+        handler((prev: any) => {
+            return {isOpen: !prev.isOpen, notificationCount: 0}
+        })
     }
 
     return (
@@ -78,23 +99,45 @@ const Topbar = () => {
                               onClick={() => redirect(`/profile/${user.id}`)}>Profile</span>
                     </div>
                     <div className={classes.topbarIcons}>
-                        <div className={classes.topbarIconItem}>
+                        <div className={classes.topbarIconItem} onClick={() => openNotification(setPersonNotification)}>
                             <Person/>
-                            <span className={classes.topbarIconBadge}>1</span>
-                            <div className={classes.dropDownPerson}>
-                                <div className={classes.dialog}>
-                                    <div className={classes.arrowPerson}>
-                                    </div>
+                            {
+                                personNotification.notificationCount ?
+                                    <span
+                                        className={classes.topbarIconBadge}>{personNotification.notificationCount}</span>
+                                    : null
+                            }
+                            <div className={classes.dropDownPerson} hidden={!personNotification.isOpen}>
+                                <div className={classes.arrowPerson}>
                                 </div>
                             </div>
                         </div>
-                        <div className={classes.topbarIconItem}>
+                        <div className={classes.topbarIconItem} onClick={() => openNotification(setChatNotification)}>
                             <Chat/>
-                            <span className={classes.topbarIconBadge}>2</span>
+
+                            {
+                                chatNotification.notificationCount ?
+                                    <span className={classes.topbarIconBadge}>{chatNotification.notificationCount}</span>
+                                    : null
+                            }
+                            <div className={classes.dropDownChat} hidden={!chatNotification.isOpen}>
+                                <div className={classes.arrowChat}>
+                                </div>
+                            </div>
                         </div>
-                        <div className={classes.topbarIconItem}>
+                        <div className={classes.topbarIconItem} onClick={() => openNotification(setNewsNotification)}>
                             <Notifications/>
-                            <span className={classes.topbarIconBadge}>1</span>
+                            {
+                                newsNotification.notificationCount ?
+                                    <span className={classes.topbarIconBadge}
+                                    >{newsNotification.notificationCount}</span>
+                                    : null
+                            }
+
+                            <div className={classes.dropDownNotification} hidden={!newsNotification.isOpen}>
+                                <div className={classes.arrowNotification}>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className={classes.topRightOptions}>

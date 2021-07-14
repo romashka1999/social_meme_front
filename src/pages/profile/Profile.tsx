@@ -16,7 +16,6 @@ import {
 import {Button} from "@material-ui/core";
 import {Edit} from "@material-ui/icons";
 import {getFolloweesPosts, getUserPosts} from "../../modules/feed/posts.service";
-import Chat from "../../modules/chat/Chat";
 
 interface Profile {
     id: number;
@@ -181,10 +180,6 @@ const Profile: React.FC = (props) => {
                                   follower={profile?.followersCount}
                                   following={profile?.followingsCount}/>
                     </div>
-                </div>
-
-                <div className={classes.chat}>
-                    <Chat/>
                 </div>
             </div>
         </>

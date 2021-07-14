@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 import classes from './online.module.css';
+import Chat from "../chat/Chat";
+import io from "socket.io-client";
 
 interface User {
     firstName: string;
@@ -9,11 +11,38 @@ interface User {
     profileImgUrl: string | null;
 }
 
+const URL = process.env.REACT_APP_API_URL_Socket + '/chats';
+
+
 const Online: React.FC<User> = ({id, firstName, lastName, profileImgUrl}) => {
+    const [showChat, setShowChat] = useState(false);
+    const [receivedSocket, setReceivedSocket] = useState(false);
+    const [socket, setSocket] = useState<any>();
     const openChatWindow = () => {
-        // const button = document.querySelector('.sc-launcher') as HTMLElement;
-        // button?.click();
+        setShowChat(true);
     }
+
+    useEffect(() => {
+        const token = localStorage.getItem("token") as string;
+
+        const socket = io(URL, {
+            transports: ["websocket", "polling", "flashsocket"],
+            query: { token },
+        });
+
+        socket.on("joinRoom", () => {
+            socket.emit("joinRoom");
+        });
+
+        socket.on('connect', () =>{
+            setSocket(socket);
+        })
+    },[])
+
+    useEffect(() => {
+        if(!socket) return;
+        setReceivedSocket(true);
+    }, [socket])
 
     return (
         <li className={classes.rightbarFriend} onClick={openChatWindow}>
@@ -24,7 +53,11 @@ const Online: React.FC<User> = ({id, firstName, lastName, profileImgUrl}) => {
                 </span>
             </div>
             <span className={classes.rightbarUsername}>{`${firstName} ${lastName}`}</span>
+            {
+                showChat && receivedSocket && <Chat userId={id.toString()} socket={socket}/>
+            }
         </li>
+
     );
 };
 

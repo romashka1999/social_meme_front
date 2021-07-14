@@ -8,7 +8,8 @@ import Feed from "../../modules/feed/Feed";
 import Rightbar from "../../modules/rightbar/Rightbar";
 import { getFolloweesPosts } from "../../modules/feed/posts.service";
 
-const URL = "http://09e8ada14ca6.ngrok.io/posts";
+
+const URL = process.env.REACT_APP_API_URL_Socket + '/posts';
 
 const Home = () => {
     const [posts, setPosts] = useState<any[]>([]);
@@ -28,7 +29,6 @@ const Home = () => {
 
     useEffect(() => {
         const token = localStorage.getItem("token") as string;
-        console.log(`token`, token);
 
         const socket = io(URL, {
             transports: ["websocket", "polling", "flashsocket"],
